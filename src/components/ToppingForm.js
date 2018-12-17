@@ -128,5 +128,4 @@ const ToppingForm = (props) => {
     </Fragment>
   )
 }
-
 export default ToppingForm

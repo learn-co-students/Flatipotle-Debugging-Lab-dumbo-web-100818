@@ -7,5 +7,4 @@ const Side = (props) => {
     </div>
   )
 }
-
 export default Side
