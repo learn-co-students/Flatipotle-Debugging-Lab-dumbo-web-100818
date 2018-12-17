@@ -6,11 +6,14 @@ class Order extends Component {
     isClicked: false
   }
 
-  handleClick = () => {
-    this.state.isClicked = !this.state.isClicked
+  handleClick = (e) => {
+    this.setState({
+     isClicked: !this.state.isClicked
+   })
   }
 
   render() {
+
     return (
       <div className="ui centered raised card">
         <div className="image">
@@ -36,8 +39,7 @@ class Order extends Component {
               <p>No sides</p>
           }
 
-          { /* this is just a shortcut to writing this.state.isClicked ? <Side sides={this.props.sides} /> : null */ }
-          { this.state.isClicked && <Side sides={this.props.sides} /> }
+           { this.state.isClicked && <Side sides={this.props.sides} /> }
 
         </div>
       </div>
