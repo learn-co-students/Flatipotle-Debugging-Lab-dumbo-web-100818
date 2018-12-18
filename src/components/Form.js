@@ -16,7 +16,7 @@ class Form extends Component {
     ...DEFAULT_STATE
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault()
     document.getElementById("order-form").reset()
     this.props.addOrder(this.state)
@@ -26,10 +26,15 @@ class Form extends Component {
     })
   }
 
-  handleChange(event) {
+  // error: TypeError: Cannot read property 'state' of undefined
+  // solution: 'this' in handleChange was previously undefined because the function was not being bound to this class. The solution is to make the function an arrow function so 'this' is implicitly bound
+
+  handleChange = (event) => {
     const itemType = event.target.name
     const item = event.target.value
-
+    console.log(itemType)
+    console.log(item)
+    console.log(this.state)
     !this.state[`${itemType}`].includes(item) ?
       this.setState({
         [itemType]: this.state[`${itemType}`].concat(item)
@@ -43,28 +48,30 @@ class Form extends Component {
   }
 
   render() {
+    console.log(this.state['protein'])
     return(
+
       <div className="ui raised container segment">
         <h1 className="ui block header">Order Form</h1>
         <form className="ui form" id="order-form" onSubmit={ this.handleSubmit }>
           <ProteinForm
             protein={ this.state.protein }
-            handleOnChange={ this.handleChange }
+            handleChange={ this.handleChange }
           />
 
           <FillingForm
             fillings={ this.state.fillings }
-            handleOnChange={ this.handleChange }
+            handleChange={ this.handleChange }
           />
 
           <ToppingForm
             toppings={ this.state.toppings }
-            handleOnChange={ this.handleChange }
+            handleChange={ this.handleChange }
           />
 
           <SideForm
             sides={ this.state.sides }
-            handleOnChange={ this.handleChange }
+            handleChange={ this.handleChange }
           />
 
           <br />

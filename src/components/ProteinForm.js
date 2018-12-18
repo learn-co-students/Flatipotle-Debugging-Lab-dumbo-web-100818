@@ -6,7 +6,7 @@ const ProteinForm = (props) => {
       <h1><label htmlFor="protein">Protein</label></h1>
       <div className="inline fields ui centered grid">
         <div className="field">
-          <div onChange={ props.handleChange } className="ui checkbox">
+          <div  className="ui checkbox">
             <input
               id="barbacoa"
               type="checkbox"
@@ -43,7 +43,7 @@ const ProteinForm = (props) => {
               value="Chicken"
               name="protein"
               checked={ props.protein.includes('Chicken') }
-              onChange={ props.handleChange }
+              onChange={props.handleChange}
             />
             <img src={ require('../images/protein/chicken.png') } height="100px" width="100px" alt="chicken" />
             <label htmlFor="chicken">Chicken</label>
