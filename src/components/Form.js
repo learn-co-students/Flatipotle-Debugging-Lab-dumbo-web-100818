@@ -16,7 +16,7 @@ class Form extends Component {
     ...DEFAULT_STATE
   }
 
-  handleSubmit() {
+  handleSubmit = (event) => {
     event.preventDefault()
     document.getElementById("order-form").reset()
     this.props.addOrder(this.state)
@@ -26,7 +26,7 @@ class Form extends Component {
     })
   }
 
-  handleChange() {
+  handleChange = (event) => {
     const itemType = event.target.name
     const item = event.target.value
 
@@ -36,11 +36,10 @@ class Form extends Component {
       })
     :
       this.setState({
-        [itemType]: this.state[`${itemType}`].filter(
-          ingr => ingr !== item
-        )
+        [itemType]: this.state[`${itemType}`].filter(ingr => ingr !== item)
       })
   }
+
 
   render() {
     return(
@@ -49,12 +48,12 @@ class Form extends Component {
         <form className="ui form" id="order-form" onSubmit={ this.handleSubmit }>
           <ProteinForm
             protein={ this.state.protein }
-            handleOnChange={ this.handleChange }
+            handleOnChange={this.handleChange}
           />
 
           <FillingForm
             fillings={ this.state.fillings }
-            handleOnChange={ this.handleChange }
+            handleOnChange={this.handleChange}
           />
 
           <ToppingForm
