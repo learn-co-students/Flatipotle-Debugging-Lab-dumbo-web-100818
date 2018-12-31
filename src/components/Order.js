@@ -1,3 +1,4 @@
+import Side from "./Side"
 import React, { Component } from 'react'
 
 class Order extends Component {
@@ -6,7 +7,7 @@ class Order extends Component {
   }
 
   handleClick = () => {
-    this.state.isClicked = !this.state.isClicked
+    this.setState.isClicked = !this.state.isClicked
   }
 
   render() {
